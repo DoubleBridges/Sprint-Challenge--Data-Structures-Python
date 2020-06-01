@@ -61,11 +61,11 @@ class BSTNode:
 start_time = time.time()
 
 f = open("names_1.txt", "r")
-names_1 = f.read().split("\n")  # List containing 10000 names
+names_1 = set(f.read().split("\n"))  # List containing 10000 names
 f.close()
 
 f = open("names_2.txt", "r")
-names_2 = f.read().split("\n")  # List containing 10000 names
+names_2 = set(f.read().split("\n"))  # List containing 10000 names
 f.close()
 
 # duplicates = []  # Return the list of duplicates in this data structure
@@ -88,10 +88,11 @@ f.close()
 #     name_tree.insert_originals_only(name)
 
 
-# Third O(n): ~0.85 sec
-# duplicates = [name for name in names_1 if name in names_2]
+# Strecth - changed names_1 and names_2 to sets, not sure about O.
+# [elem in set()] is O(1) average case, O(n) worst case. So should this be O(1+1) (if that's even a thing),
+# or is it still O(1)?: ~0.0025 sec
+duplicates = [name for name in names_1 if name in names_2]
 
-duplicates = (set(names_1) + set(names_2)) - (set(names_1) - set(names_2))
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
