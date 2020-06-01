@@ -101,6 +101,8 @@ f.close()
 
 duplicates = names_1.intersection(names_2)
 
+# ***Source for time complexity on built-in methods https://wiki.python.org/moin/TimeComplexity ***
+
 
 end_time = time.time()
 # print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
