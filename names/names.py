@@ -73,12 +73,14 @@ f.close()
 # Replace the nested for loops below with your improvements
 
 # First attempt - O(n): avg time ~0.85 sec
+
 # for name_1 in names_1:
 #     if names_2.__contains__(name_1):
 #         duplicates.append(name_1)
 
 
 # Second attempt - O(log n): avg time ~0-.072 sec
+
 # name_tree = BSTNode("")
 
 # for name in names_1:
@@ -88,14 +90,21 @@ f.close()
 #     name_tree.insert_originals_only(name)
 
 
-# Strecth - changed names_1 and names_2 to sets, not sure about O.
+# Stretch - changed names_1 and names_2 to sets, not sure about O.
 # [elem in set()] is O(1) average case, O(n) worst case. So should this be O(1+1) (if that's even a thing),
 # or is it still O(1)?: ~0.0025 sec
-duplicates = [name for name in names_1 if name in names_2]
+
+# duplicates = [name for name in names_1 if name in names_2]
+
+# Stretch - O(min(len(names_1), len(names_2)) Avg Case, O(len(names_1) * len(names_2))) Worst Case, O(n^2),
+# but is faster on average than the previous solution??: ~0.00207 sec
+
+duplicates = names_1.intersection(names_2)
 
 
 end_time = time.time()
-print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+# print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+print(len(duplicates))
 print(f"runtime: {end_time - start_time} seconds")
 
 
