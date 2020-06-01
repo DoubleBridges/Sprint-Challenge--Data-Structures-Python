@@ -68,7 +68,7 @@ f = open("names_2.txt", "r")
 names_2 = set(f.read().split("\n"))  # List containing 10000 names
 f.close()
 
-# duplicates = []  # Return the list of duplicates in this data structure
+duplicates = []  # Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
 
@@ -81,13 +81,13 @@ f.close()
 
 # Second attempt - O(log n): avg time ~0-.072 sec
 
-# name_tree = BSTNode("")
+name_tree = BSTNode("")
 
-# for name in names_1:
-#     name_tree.insert_originals_only(name)
+for name in names_1:
+    name_tree.insert(name)
 
-# for name in names_2:
-#     name_tree.insert_originals_only(name)
+for name in names_2:
+    name_tree.insert_originals_only(name)
 
 
 # Stretch - changed names_1 and names_2 to sets, not sure about O.
@@ -99,14 +99,14 @@ f.close()
 # Stretch - O(min(len(names_1), len(names_2)) Avg Case, O(len(names_1) * len(names_2))) Worst Case, O(n^2),
 # but is faster on average than the previous solution??: ~0.00207 sec
 
-duplicates = names_1.intersection(names_2)
+# duplicates = names_1.intersection(names_2)
 
 # ***Source for time complexity on built-in methods https://wiki.python.org/moin/TimeComplexity ***
 
 
 end_time = time.time()
-# print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print(len(duplicates))
+print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+# print(len(duplicates))
 print(f"runtime: {end_time - start_time} seconds")
 
 
